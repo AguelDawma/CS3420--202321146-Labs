@@ -2,6 +2,16 @@
 
 using namespace std;
 
+void head(int indent){
+	int space = 0;
+	
+	while(indent > space){
+		cout<<" ";
+		space++;
+	}
+	cout<<"(0)"<<endl;
+}
+
 int main(){
 	int n;
 	
@@ -13,6 +23,10 @@ int main(){
 	int spaces = middle+1;
 	int rowNumber=1;
 	int stars = 1;
+	
+	spaces+=10;
+	
+	head(spaces);
 	
 	while(n >= rowNumber){
 		int spacesCounter = 0;

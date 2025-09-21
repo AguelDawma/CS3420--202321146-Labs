@@ -1,5 +1,6 @@
 .data
 	prompt: .asciz " \nEnter size of mokorotlo: "
+	head: .asciz "(0)\n"
 	space: .asciz " "
 	star: .asciz "*"
 	endl: .asciz "\n"
@@ -20,6 +21,26 @@ Mokorotlo:
 	addi t0, t0, 10 #add some indentation before the mokorotlo
 	li t1, 1 #row number
 	li t2, 0 #stars
+	
+	Head:
+		li t5, 2 #space, beginning at 2 to place the head at the tip
+		headSpaces:
+			blt t0, t5, drawHead
+			
+			la a0, space
+			li a7, 4
+			ecall
+			
+			addi t5, t5, 1
+			j headSpaces
+			
+		drawHead:
+			la a0, head
+			li a7, 4
+			ecall
+			
+			j loop
+		
 	
 	loop:
 		bge t1, s0, exit
